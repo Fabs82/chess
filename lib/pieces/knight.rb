@@ -1,12 +1,13 @@
-#class Knight
-class Knight
-  attr_reader :color
+require_relative 'piece'
+
+# class Knight
+class Knight < Piece
   def initialize(color)
-    @color = color
+    super
     @moves = [[+2, +1], [+2, -1], [-2, +1], [-2, -1], [+1, +2], [-1, +2], [+1, -2], [-1, -2]]
   end
 
-  def to_s
-    @color == :white ? '♘' : '♞'
+  def icons
+    { white: '♘', black: '♞' }
   end
 end

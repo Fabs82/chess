@@ -1,13 +1,13 @@
-# Pawn class
-class Pawn
-  attr_reader :color
+require_relative 'piece'
 
+# Pawn class
+class Pawn < Piece
   def initialize(color)
-    @color = color
+    super
     @moves = [[0, 1], [0, 2]]
   end
 
-  def to_s
-    @color == :white ? '♙' : '♟'
+  def icons
+    { white: '♙', black: '♟' }
   end
 end

@@ -1,12 +1,13 @@
-#class Queen
-class Queen
-  attr_reader :color
+require_relative 'piece'
+
+# class Queen
+class Queen < Piece
   def initialize(color)
-    @color = color
-    @moves = [[-1, -1], [-1, 0], [-1, 1], [0, -1],[0, 1], [1, -1], [1, 0], [1, 1]]
+    super
+    @moves = [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]]
   end
 
-  def to_s
-    @color == :white ? '♕' : '♛'
+  def icons
+    { white: '♕', black: '♛' }
   end
 end

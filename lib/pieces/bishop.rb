@@ -1,12 +1,13 @@
-#class Bishop
-class Bishop
-  attr_reader :color
+require_relative 'piece'
+
+# class Bishop
+class Bishop < Piece
   def initialize(color)
-    @color = color
+    super
     @moves = [[-1, -1], [-1, 1], [1, -1], [1, 1]]
   end
 
-  def to_s
-    @color == :white ? '♗' : '♝'
+  def icons
+    { white: '♗', black: '♝' }
   end
 end

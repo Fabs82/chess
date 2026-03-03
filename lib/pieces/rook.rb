@@ -1,13 +1,13 @@
-#Rook class
-class Rook
-  attr_reader :color
+require_relative 'piece'
 
+# Rook class
+class Rook < Piece
   def initialize(color)
-    @color = color
+    super
     @moves = [[1, 0], [-1, 0], [0, 1], [0, -1]]
   end
 
-  def to_s
-    @color == :white ? '♖' : '♜'
+  def icons
+    { white: '♖', black: '♜' }
   end
 end
