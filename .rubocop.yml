@@ -12,5 +12,5 @@
 plugins:
   - rubocop-performance
 
-Allcops:
-Newcops: enable
+AllCops:
+  NewCops: enable
