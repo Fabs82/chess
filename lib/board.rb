@@ -1,3 +1,10 @@
+require_relative 'pieces/pawn'
+require_relative 'pieces/king'
+require_relative 'pieces/rook'
+require_relative 'pieces/knight'
+require_relative 'pieces/queen'
+require_relative 'pieces/bishop'
+
 # A class that manages and renders the ChessBoard
 class ChessBoard
   attr_reader :board
@@ -9,26 +16,26 @@ class ChessBoard
   def board_setup
     # temporarely use letters instead of the pieces
     # first row
-    @board[0][0] = 'R'
-    @board[0][1] = 'N'
-    @board[0][2] = 'B'
-    @board[0][3] = 'Q'
-    @board[0][4] = 'K'
-    @board[0][5] = 'B'
-    @board[0][6] = 'N'
-    @board[0][7] = 'R'
+    @board[0][0] = Rook.new(:white)
+    @board[0][1] = Knight.new(:white)
+    @board[0][2] = Bishop.new(:white)
+    @board[0][3] = Queen.new(:white)
+    @board[0][4] = King.new(:white)
+    @board[0][5] = Bishop.new(:white)
+    @board[0][6] = Knight.new(:white)
+    @board[0][7] = Rook.new(:white)
     # entire line for Pawns
-    @board[1] = Array.new(8, 'P')
-    @board[6] = Array.new(8, 'p')
+    @board[1] = Array.new(8) { Pawn.new(:white) }
+    @board[6] = Array.new(8) { Pawn.new(:black) }
     # last row
-    @board[7][0] = 'r'
-    @board[7][1] = 'n'
-    @board[7][2] = 'b'
-    @board[7][3] = 'q'
-    @board[7][4] = 'k'
-    @board[7][5] = 'b'
-    @board[7][6] = 'n'
-    @board[7][7] = 'r'
+    @board[7][0] = Rook.new(:black)
+    @board[7][1] = Knight.new(:black)
+    @board[7][2] = Bishop.new(:black)
+    @board[7][3] = Queen.new(:black)
+    @board[7][4] = King.new(:black)
+    @board[7][5] = Bishop.new(:black)
+    @board[7][6] = Knight.new(:black)
+    @board[7][7] = Rook.new(:black)
   end
 
   def place(piece, position)
