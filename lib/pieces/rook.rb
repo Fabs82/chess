@@ -1,13 +1,12 @@
-require_relative 'piece'
-
 # Rook class
 class Rook < Piece
-  def initialize(color)
+  def initialize(board, color)
     super
-    @moves = [[1, 0], [-1, 0], [0, 1], [0, -1]]
+    @directions = [[1, 0], [-1, 0], [0, 1], [0, -1]]
   end
 
   def icons
+    # store the icons for the pieces in a hash
     { white: '♖', black: '♜' }
   end
 end

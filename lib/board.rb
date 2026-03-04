@@ -1,10 +1,4 @@
-require_relative 'pieces/pawn'
-require_relative 'pieces/king'
-require_relative 'pieces/rook'
-require_relative 'pieces/knight'
-require_relative 'pieces/queen'
-require_relative 'pieces/bishop'
-
+require_relative 'pieces/pieces'
 # A class that manages and renders the ChessBoard
 class ChessBoard
   attr_reader :board
@@ -14,28 +8,28 @@ class ChessBoard
   end
 
   def board_setup
-    # temporarely use letters instead of the pieces
+    # setup the board for a new game
     # first row
-    @board[0][0] = Rook.new(:white)
-    @board[0][1] = Knight.new(:white)
-    @board[0][2] = Bishop.new(:white)
-    @board[0][3] = Queen.new(:white)
-    @board[0][4] = King.new(:white)
-    @board[0][5] = Bishop.new(:white)
-    @board[0][6] = Knight.new(:white)
-    @board[0][7] = Rook.new(:white)
+    @board[7][0] = Rook.new(:white)
+    @board[7][1] = Knight.new(:white)
+    @board[7][2] = Bishop.new(:white)
+    @board[7][3] = Queen.new(:white)
+    @board[7][4] = King.new(:white)
+    @board[7][5] = Bishop.new(:white)
+    @board[7][6] = Knight.new(:white)
+    @board[7][7] = Rook.new(:white)
     # entire line for Pawns
-    @board[1] = Array.new(8) { Pawn.new(:white) }
-    @board[6] = Array.new(8) { Pawn.new(:black) }
+    @board[6] = Array.new(8) { Pawn.new(:white) }
+    @board[1] = Array.new(8) { Pawn.new(:black) }
     # last row
-    @board[7][0] = Rook.new(:black)
-    @board[7][1] = Knight.new(:black)
-    @board[7][2] = Bishop.new(:black)
-    @board[7][3] = Queen.new(:black)
-    @board[7][4] = King.new(:black)
-    @board[7][5] = Bishop.new(:black)
-    @board[7][6] = Knight.new(:black)
-    @board[7][7] = Rook.new(:black)
+    @board[0][0] = Rook.new(:black)
+    @board[0][1] = Knight.new(:black)
+    @board[0][2] = Bishop.new(:black)
+    @board[0][3] = Queen.new(:black)
+    @board[0][4] = King.new(:black)
+    @board[0][5] = Bishop.new(:black)
+    @board[0][6] = Knight.new(:black)
+    @board[0][7] = Rook.new(:black)
   end
 
   def place(piece, position)
@@ -44,16 +38,16 @@ class ChessBoard
     @board[row][column] = piece
   end
 
-  def out_of_bound?(position)
+  def in_bound?(position)
     # check if the position coordinates are valid
     row, column = position
-    return unless !row.between?(0, 7) || !column.between?(0, 7)
+    return true if row.between?(0, 7) && column.between?(0, 7)
 
-    puts 'Out of bound'
+    false
   end
 
   def cell_free?(position)
-    # check if the cell is free (not nil)
+    # check if the cell is free (not  == _ )
     row, column = position
     piece = @board[row][column]
     if @board[row][column] == '_'
@@ -64,18 +58,15 @@ class ChessBoard
   end
 
   def render
+    # simple render method to display the board in the terminal. Cells numbers temporarily reflect indexes
     @board.each_with_index do |line, index|
-      print "#{8 - index}| "
+      print "#{0 + index}| "
       line.each do |cell|
         print "#{cell} "
       end
       print "\n"
     end
     print ' +----------------' + "\n"
-    print '   1 2 3 4 5 6 7 8' + "\n"
+    print '   0 1 2 3 4 5 6 7' + "\n"
   end
 end
-
-board = ChessBoard.new
-board.board_setup
-board.render

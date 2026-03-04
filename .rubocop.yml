@@ -14,3 +14,6 @@ plugins:
 
 AllCops:
   NewCops: enable
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
