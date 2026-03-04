@@ -1,6 +1,6 @@
 # Pawn class
 class Pawn < Piece
-  def initialize(color)
+  def initialize(board, color)
     super
     @directions = [[0, 1], [0, 2]]
   end

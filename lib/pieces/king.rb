@@ -1,6 +1,6 @@
 # King class
 class King < Piece
-  def initialize(color)
+  def initialize(board, color)
     super
     @directions = [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]]
   end

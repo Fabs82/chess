@@ -1,6 +1,6 @@
 # class Bishop
 class Bishop < Piece
-  def initialize(color)
+  def initialize(board, color)
     super
     @directions = [[-1, -1], [-1, 1], [1, -1], [1, 1]]
   end

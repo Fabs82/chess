@@ -10,26 +10,26 @@ class ChessBoard
   def board_setup
     # setup the board for a new game
     # first row
-    @board[7][0] = Rook.new(:white)
-    @board[7][1] = Knight.new(:white)
-    @board[7][2] = Bishop.new(:white)
-    @board[7][3] = Queen.new(:white)
-    @board[7][4] = King.new(:white)
-    @board[7][5] = Bishop.new(:white)
-    @board[7][6] = Knight.new(:white)
-    @board[7][7] = Rook.new(:white)
+    @board[7][0] = Rook.new(@board, :white)
+    @board[7][1] = Knight.new(@board, :white)
+    @board[7][2] = Bishop.new(@board, :white)
+    @board[7][3] = Queen.new(@board, :white)
+    @board[7][4] = King.new(@board, :white)
+    @board[7][5] = Bishop.new(@board, :white)
+    @board[7][6] = Knight.new(@board, :white)
+    @board[7][7] = Rook.new(@board, :white)
     # entire line for Pawns
-    @board[6] = Array.new(8) { Pawn.new(:white) }
-    @board[1] = Array.new(8) { Pawn.new(:black) }
+    @board[6] = Array.new(8) { Pawn.new(@board, :white) }
+    @board[1] = Array.new(8) { Pawn.new(@board, :black) }
     # last row
-    @board[0][0] = Rook.new(:black)
-    @board[0][1] = Knight.new(:black)
-    @board[0][2] = Bishop.new(:black)
-    @board[0][3] = Queen.new(:black)
-    @board[0][4] = King.new(:black)
-    @board[0][5] = Bishop.new(:black)
-    @board[0][6] = Knight.new(:black)
-    @board[0][7] = Rook.new(:black)
+    @board[0][0] = Rook.new(@board, :black)
+    @board[0][1] = Knight.new(@board, :black)
+    @board[0][2] = Bishop.new(@board, :black)
+    @board[0][3] = Queen.new(@board, :black)
+    @board[0][4] = King.new(@board, :black)
+    @board[0][5] = Bishop.new(@board, :black)
+    @board[0][6] = Knight.new(@board, :black)
+    @board[0][7] = Rook.new(@board, :black)
   end
 
   def place(piece, position)
