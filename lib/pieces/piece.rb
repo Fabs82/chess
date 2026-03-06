@@ -14,7 +14,7 @@ class Piece
 
   def other_color?(position)
     row, column = position
-    piece = @board.board[row][column]
+    piece = @board[row][column]
     piece != '_' && piece.color != @color
   end
 end

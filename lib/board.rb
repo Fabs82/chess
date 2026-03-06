@@ -10,26 +10,27 @@ class ChessBoard
   def board_setup
     # setup the board for a new game
     # first row
-    @board[7][0] = Rook.new(@board, :white)
-    @board[7][1] = Knight.new(@board, :white)
-    @board[7][2] = Bishop.new(@board, :white)
-    @board[7][3] = Queen.new(@board, :white)
-    @board[7][4] = King.new(@board, :white)
-    @board[7][5] = Bishop.new(@board, :white)
-    @board[7][6] = Knight.new(@board, :white)
-    @board[7][7] = Rook.new(@board, :white)
+    # @board[row][column]
+    @board[7][0] = Rook.new(self, :white)
+    @board[7][1] = Knight.new(self, :white)
+    @board[7][2] = Bishop.new(self, :white)
+    @board[7][3] = Queen.new(self, :white)
+    @board[7][4] = King.new(self, :white)
+    @board[7][5] = Bishop.new(self, :white)
+    @board[7][6] = Knight.new(self, :white)
+    @board[7][7] = Rook.new(self, :white)
     # entire line for Pawns
-    @board[6] = Array.new(8) { Pawn.new(@board, :white) }
-    @board[1] = Array.new(8) { Pawn.new(@board, :black) }
+    @board[6] = Array.new(8) { Pawn.new(self, :white) }
+    @board[1] = Array.new(8) { Pawn.new(self, :black) }
     # last row
-    @board[0][0] = Rook.new(@board, :black)
-    @board[0][1] = Knight.new(@board, :black)
-    @board[0][2] = Bishop.new(@board, :black)
-    @board[0][3] = Queen.new(@board, :black)
-    @board[0][4] = King.new(@board, :black)
-    @board[0][5] = Bishop.new(@board, :black)
-    @board[0][6] = Knight.new(@board, :black)
-    @board[0][7] = Rook.new(@board, :black)
+    @board[0][0] = Rook.new(self, :black)
+    @board[0][1] = Knight.new(self, :black)
+    @board[0][2] = Bishop.new(self, :black)
+    @board[0][3] = Queen.new(self, :black)
+    @board[0][4] = King.new(self, :black)
+    @board[0][5] = Bishop.new(self, :black)
+    @board[0][6] = Knight.new(self, :black)
+    @board[0][7] = Rook.new(self, :black)
   end
 
   def place(piece, position)
@@ -49,12 +50,10 @@ class ChessBoard
   def cell_free?(position)
     # check if the cell is free (not  == _ )
     row, column = position
-    piece = @board[row][column]
-    if @board[row][column] == '_'
-      puts 'row is free'
-    else
-      puts "row is taken by #{piece}"
-    end
+    cell = @board[row][column]
+    return true if cell == '_'
+
+    false
   end
 
   def render
